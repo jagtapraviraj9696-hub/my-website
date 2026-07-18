@@ -145,4 +145,21 @@ footer{
     background:#333;
     color:white;
     border:1px solid #555;
+.dark-mode{
+    background:#121212;
+    color:white;
+}
+
+.dark-mode header{
+    background:#1f1f1f;
+}
+
+.dark-mode section{
+    background:#222;
+    color:white;
+}
+
+.dark-mode nav a{
+    color:#90ee90;
+}
 }
