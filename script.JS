@@ -22,7 +22,7 @@ function calculateWater() {
 
 // Dark Mode
 function toggleDarkMode() {
-    document.body.classList.toggle("dark");
+    document.body.classList.toggle("dark mode");
 }
 
 // Live Search
