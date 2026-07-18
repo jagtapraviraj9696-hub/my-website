@@ -1,0 +1,865 @@
+<header>
+
+    <div class="logo">
+        <h1>🌿 EcoSmartVillage</h1>
+        <p>Community Engagement Project (CEP)</p>
+    </div>
+
+    <div class="search-container">
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="Search..."
+            onkeyup="liveSearch()">
+
+        <div id="searchResults" class="search-results"></div>
+    </div>
+<button onclick="changeLanguage('en')">🇬🇧 English</button>
+
+<button onclick="changeLanguage('mr')">🇮🇳 मराठी</button>
+    <nav>
+
+        <a href="#home">🏠 Home</a>
+
+        <a href="#about">📖 About</a>
+
+        <a href="#objectives">🎯 Objectives</a>
+
+        <a href="#benefits">🌟 Benefits</a>
+
+        <a href="#water">💧 Water</a>
+
+        <a href="#waste">♻️ Waste</a>
+
+        <a href="#farming">🌱 Farming</a>
+
+        <a href="#energy">☀️ Energy</a>
+
+        <a href="#gallery">🖼 Gallery</a>
+
+        <a href="#contact">📞 Contact</a>
+
+    </nav>
+
+    <button onclick="toggleDarkMode()">
+        🌙 Dark Mode
+    </button>
+
+</header>
+
+<main>
+
+<section id="home" class="hero">
+
+<h2>🌍 Welcome to EcoSmartVillage</h2>
+
+<p>
+
+EcoSmartVillage is an innovative Community Engagement Project
+that promotes sustainable village development through
+Water Conservation,
+Waste Management,
+Organic Farming,
+Renewable Energy
+and Environmental Awareness.
+
+</p>
+
+<div class="hero-buttons">
+
+<button onclick="showMessage()">
+🚀 Explore Project
+</button>
+
+<a href="#about">
+<button>
+📖 Learn More
+</button>
+</a>
+
+</div>
+
+</section>
+<!-- ABOUT -->
+
+<section id="about">
+
+<h2>📖 About EcoSmartVillage</h2>
+
+<p>
+
+EcoSmartVillage is a Community Engagement Project (CEP)
+developed to create awareness about environmental protection,
+clean villages, water conservation,
+organic farming and renewable energy.
+
+This project helps villagers understand
+modern eco-friendly practices for sustainable development.
+
+</p>
+
+</section>
+
+<!-- OBJECTIVES -->
+
+<section id="objectives">
+
+<h2>🎯 Project Objectives</h2>
+
+<ul>
+
+<li>💧 Promote Water Conservation</li>
+
+<li>♻️ Encourage Waste Management</li>
+
+<li>🌱 Support Organic Farming</li>
+
+<li>☀️ Promote Renewable Energy</li>
+
+<li>🌍 Protect Environment</li>
+
+<li>🏡 Develop Smart Villages</li>
+
+</ul>
+
+</section>
+
+<!-- BENEFITS -->
+
+<section id="benefits">
+
+<h2>🌟 Benefits</h2>
+
+<div class="benefit-grid">
+
+<div class="card">
+
+<h3>💧 Save Water</h3>
+
+<p>Reduce water wastage through rainwater harvesting.</p>
+
+</div>
+
+<div class="card">
+
+<h3>🌱 Healthy Farming</h3>
+
+<p>Use organic fertilizers for healthy crops.</p>
+
+</div>
+
+<div class="card">
+
+<h3>♻️ Clean Village</h3>
+
+<p>Separate waste and recycle materials.</p>
+
+</div>
+
+<div class="card">
+
+<h3>☀️ Renewable Energy</h3>
+
+<p>Use solar energy to reduce electricity costs.</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- STATISTICS -->
+
+<section class="stats">
+
+<div class="stat-card">
+
+<h2 id="treeCounter">500+</h2>
+
+<p>🌳 Trees Planted</p>
+
+</div>
+
+<div class="stat-card">
+
+<h2 id="waterCounter">12000L</h2>
+
+<p>💧 Water Saved</p>
+
+</div>
+
+<div class="stat-card">
+
+<h2 id="peopleCounter">250+</h2>
+
+<p>👨‍👩‍👧 Families Connected</p>
+
+</div>
+
+<div class="stat-card">
+
+<h2 id="solarCounter">150+</h2>
+
+<p>☀️ Solar Users</p>
+
+</div>
+
+</section>
+
+<!-- IMAGE SLIDER -->
+
+<section id="slider">
+
+<h2>🖼 EcoSmartVillage Gallery</h2>
+
+<div class="slider">
+
+<img
+id="sliderImage"
+src="images/village1.jpg"
+alt="Village Image">
+
+</div>
+
+</section>
+<!-- WATER CONSERVATION -->
+
+<section id="water">
+
+<h2>💧 Water Conservation</h2>
+
+<p>
+Water is one of the most valuable natural resources.
+Saving water helps future generations and improves village sustainability.
+</p>
+
+<div class="card-container">
+
+<div class="card">
+<h3>🌧 Rainwater Harvesting</h3>
+<p>Collect rainwater and store it for future use.</p>
+</div>
+
+<div class="card">
+<h3>🚰 Fix Water Leakage</h3>
+<p>Repair leaking taps and pipelines immediately.</p>
+</div>
+
+<div class="card">
+<h3>🌾 Efficient Irrigation</h3>
+<p>Use drip irrigation to reduce water wastage.</p>
+</div>
+
+</div>
+
+</section>
+
+<!-- WASTE MANAGEMENT -->
+
+<section id="waste">
+
+<h2>♻️ Waste Management</h2>
+
+<p>
+Proper waste management keeps villages clean and healthy.
+Separate wet and dry waste before disposal.
+</p>
+
+<div class="card-container">
+
+<div class="card">
+<h3>🟢 Wet Waste</h3>
+<p>Convert kitchen waste into compost manure.</p>
+</div>
+
+<div class="card">
+<h3>🔵 Dry Waste</h3>
+<p>Recycle plastic, paper and metal materials.</p>
+</div>
+
+<div class="card">
+<h3>🚯 Clean Village</h3>
+<p>Do not throw garbage on roads or rivers.</p>
+</div>
+
+</div>
+
+</section>
+
+<!-- ORGANIC FARMING -->
+
+<section id="farming">
+
+<h2>🌱 Organic Farming</h2>
+
+<p>
+Organic farming improves soil fertility and produces healthy food
+without harmful chemicals.
+</p>
+
+<div class="card-container">
+
+<div class="card">
+<h3>🌿 Organic Fertilizers</h3>
+<p>Use compost and natural fertilizers.</p>
+</div>
+
+<div class="card">
+<h3>🐄 Cow Dung</h3>
+<p>Natural manure improves soil quality.</p>
+</div>
+
+<div class="card">
+<h3>🌾 Healthy Crops</h3>
+<p>Reduce chemical pesticides for better production.</p>
+</div>
+
+</div>
+
+</section>
+
+<!-- RENEWABLE ENERGY -->
+
+<section id="energy">
+
+<h2>☀️ Renewable Energy</h2>
+
+<p>
+Renewable energy helps reduce pollution and electricity costs.
+</p>
+
+<div class="card-container">
+
+<div class="card">
+<h3>☀ Solar Energy</h3>
+<p>Generate electricity using solar panels.</p>
+</div>
+
+<div class="card">
+<h3>💨 Wind Energy</h3>
+<p>Use wind turbines for clean electricity.</p>
+</div>
+
+<div class="card">
+<h3>🔋 Save Energy</h3>
+<p>Switch off electrical devices when not in use.</p>
+</div>
+
+</div>
+
+<button onclick="showMessage()">
+Learn More
+</button>
+
+</section>
+<!-- WATER CALCULATOR -->
+
+<section id="calculator">
+
+<h2>🧮 Water Saving Calculator</h2>
+
+<p>Enter number of family members</p>
+
+<input type="number"
+id="members"
+placeholder="Example: 4">
+
+<button onclick="calculateWater()">
+Calculate
+</button>
+
+<h3 id="result"></h3>
+
+</section>
+<section id="carbon">
+    <h2>🌱 Carbon Footprint Calculator</h2>
+
+    <p>Electricity Used (Units/Month)</p>
+    <input type="number" id="carbonUnits" placeholder="Example: 150">
+
+    <button onclick="calculateCarbon()">Calculate</button>
+
+    <h3 id="carbonResult"></h3>
+</section>
+<!-- ELECTRICITY BILL CALCULATOR -->
+
+<section id="electricity">
+
+<h2>⚡ Electricity Bill Calculator</h2>
+
+<p>Enter electricity units consumed</p>
+
+<input type="number"
+id="units"
+placeholder="Example: 120">
+
+<button onclick="calculateBill()">
+Calculate Bill
+</button>
+
+<h3 id="billResult"></h3>
+
+</section>
+<section id="dashboard">
+
+<h2>📊 Eco Dashboard</h2>
+
+<div class="dashboard">
+
+<div class="dash-card">
+<h3 id="treeCounter">0</h3>
+<p>🌳 Trees Planted</p>
+</div>
+
+<div class="dash-card">
+<h3 id="waterCounter">0</h3>
+<p>💧 Litres Water Saved</p>
+</div>
+
+<div class="dash-card">
+<h3 id="peopleCounter">0</h3>
+<p>👨‍👩‍👧 People Benefited</p>
+</div>
+
+<div class="dash-card">
+<h3 id="solarCounter">0</h3>
+<p>☀️ Solar Projects</p>
+</div>
+
+</div>
+
+</section>
+<!-- TREE PLANTATION -->
+
+<section id="trees">
+
+<h2>🌳 Tree Plantation Counter</h2>
+
+<h1 id="treeNumber">0</h1>
+
+<button onclick="increaseTree()">
+🌱 Plant Tree
+</button>
+
+</section>
+
+<!-- WEATHER -->
+
+<section id="weather">
+
+<h2>🌦 Today's Weather</h2>
+
+<div class="card">
+
+<h3>☀ Sunny</h3>
+
+<p>Temperature : 30°C</p>
+
+<p>Humidity : 60%</p>
+
+<p>Wind : 10 km/h</p>
+
+</div>
+
+</section>
+
+<!-- ECO TIPS -->
+
+<section id="tips">
+
+<h2>🌿 Daily Eco Tips</h2>
+
+<ul>
+
+<li>💧 Turn off taps when not in use.</li>
+
+<li>♻ Separate wet and dry waste.</li>
+
+<li>🌱 Plant at least one tree every year.</li>
+
+<li>☀ Use solar energy whenever possible.</li>
+
+<li>🚲 Use bicycles for short distances.</li>
+
+</ul>
+
+</section>
+<!-- PROJECT GALLERY -->
+
+<section id="gallery">
+
+<h2>🖼 Project Gallery</h2>
+
+<div class="gallery">
+
+<div class="card">
+<img src="images/water.jpg" alt="Water" width="100%">
+<h3>💧 Water Conservation</h3>
+<p>Rainwater Harvesting Project</p>
+</div>
+
+<div class="card">
+<img src="images/waste.jpg" alt="Waste" width="100%">
+<h3>♻ Waste Management</h3>
+<p>Clean Village Campaign</p>
+</div>
+
+<div class="card">
+<img src="images/farming.jpg" alt="Farming" width="100%">
+<h3>🌱 Organic Farming</h3>
+<p>Natural Farming Methods</p>
+</div>
+
+<div class="card">
+<img src="images/solar.jpg" alt="Solar" width="100%">
+<h3>☀ Renewable Energy</h3>
+<p>Solar Energy Awareness</p>
+</div>
+
+</div>
+
+</section>
+
+<!-- LATEST NEWS -->
+
+<section id="news">
+
+<h2>📰 Latest News</h2>
+
+<div class="card">
+<p>🌳 100 New Trees Planted This Month.</p>
+</div>
+
+<div class="card">
+<p>💧 Rainwater Harvesting Awareness Program Conducted.</p>
+</div>
+
+<div class="card">
+<p>♻ Plastic-Free Village Campaign Started.</p>
+</div>
+
+</section>
+
+<!-- EVENTS -->
+
+<section id="events">
+
+<h2>📅 Upcoming Events</h2>
+
+<ul>
+
+<li>🌱 Tree Plantation Drive - 15 August</li>
+
+<li>💧 Water Awareness Rally - 20 August</li>
+
+<li>♻ Clean Village Campaign - 25 August</li>
+
+<li>☀ Solar Energy Workshop - 30 August</li>
+
+</ul>
+
+</section>
+
+<!-- ACHIEVEMENTS -->
+
+<section id="achievement">
+
+<h2>🏆 Achievements</h2>
+
+<div class="card">
+
+<h3>500+</h3>
+
+<p>Trees Planted</p>
+
+</div>
+
+<div class="card">
+
+<h3>250+</h3>
+
+<p>Families Participated</p>
+
+</div>
+
+<div class="card">
+
+<h3>12000 L</h3>
+
+<p>Water Saved</p>
+
+</div>
+
+</section>
+
+<!-- FAQ -->
+
+<section id="faq">
+
+<h2>❓ Frequently Asked Questions</h2>
+
+<details>
+<summary>What is EcoSmartVillage?</summary>
+<p>EcoSmartVillage is a Community Engagement Project for sustainable village development.</p>
+</details>
+
+<details>
+<summary>Why Water Conservation?</summary>
+<p>Saving water helps future generations and reduces shortages.</p>
+</details>
+
+<details>
+<summary>Why Organic Farming?</summary>
+<p>Organic farming improves soil fertility and produces healthier crops.</p>
+</details>
+
+</section>
+
+<!-- FEEDBACK RATING -->
+
+<section id="rating">
+
+<h2>⭐ Rate Our Project</h2>
+
+<p>⭐⭐⭐⭐⭐</p>
+
+<p>Thank you for your valuable feedback.</p>
+
+</section>
+<!-- CONTACT -->
+<section id="progress">
+
+<h2>📈 Eco Progress</h2>
+
+<p>💧 Water Conservation</p>
+<progress value="85" max="100"></progress>
+<span>85%</span>
+
+<br><br>
+
+<p>🌳 Tree Plantation</p>
+<progress value="70" max="100"></progress>
+<span>70%</span>
+
+<br><br>
+
+<p>♻️ Waste Management</p>
+<progress value="90" max="100"></progress>
+<span>90%</span>
+
+<br><br>
+
+<p>☀️ Renewable Energy</p>
+<progress value="60" max="100"></progress>
+<span>60%</span>
+
+</section>
+  <section id="game">
+
+<h2>♻️ Waste Sorting Game</h2>
+
+<p>Click the correct bin for the waste item.</p>
+
+<h3 id="wasteItem">🍌 Banana Peel</h3>
+
+<button onclick="checkAnswer('wet')">🟢 Wet Waste</button>
+
+<button onclick="checkAnswer('dry')">🔵 Dry Waste</button>
+
+<h3 id="score">Score : 0</h3>
+
+</section>
+<section id="contact">
+
+<h2>📞 Contact Us</h2>
+
+<form>
+
+<label>Full Name</label>
+
+<input type="text" placeholder="Enter your name">
+
+<label>Email</label>
+
+<input type="email" placeholder="Enter your email">
+
+<label>Mobile Number</label>
+
+<input type="tel" placeholder="Enter your mobile number">
+
+<label>Message</label>
+
+<textarea rows="5" placeholder="Write your message"></textarea>
+
+<button type="submit">Send Message</button>
+
+</form>
+
+</section>
+
+<!-- GOOGLE MAP -->
+
+<section id="location">
+
+<h2>📍 Our Location</h2>
+
+<iframe
+src="https://www.google.com/maps?q=SVPM+College+of+Engineering+Malegaon+Bk&output=embed"
+width="100%"
+height="350"
+style="border:0;border-radius:10px;"
+loading="lazy">
+</iframe>
+
+</section>
+
+<!-- EMERGENCY CONTACTS -->
+
+<section id="emergency">
+
+<h2>🚨 Emergency Contacts</h2>
+
+<div class="card">
+<p>🚑 Ambulance : 108</p>
+<p>🚒 Fire Brigade : 101</p>
+<p>👮 Police : 100</p>
+<p>☎ Women Helpline : 1091</p>
+</div>
+
+</section>
+
+<!-- SOCIAL MEDIA -->
+
+<section id="social">
+
+<h2>🌐 Follow Us</h2>
+
+<a href="#">📘 Facebook</a><br><br>
+
+<a href="#">📷 Instagram</a><br><br>
+
+<a href="#">▶ YouTube</a><br><br>
+
+<a href="https://wa.me/919881883935" target="_blank">
+
+💬 WhatsApp Chat
+
+</a>
+
+</section>
+
+<!-- SCROLL TO TOP -->
+
+<button id="topBtn" onclick="topFunction()">
+
+⬆
+
+</button>
+
+<!-- FOOTER -->
+
+<!-- WHATSAPP FLOAT BUTTON -->
+
+<a
+href="https://wa.me/9881883935"
+class="whatsapp-float"
+target="_blank">
+
+<img
+src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
+width="60">
+
+</a>
+<section id="quiz">
+    <h2>🏆 Eco Quiz</h2>
+
+    <p>1. Which energy source is renewable?</p>
+
+    <input type="radio" name="q1" value="0"> Coal<br>
+    <input type="radio" name="q1" value="1"> Solar<br>
+    <input type="radio" name="q1" value="0"> Diesel<br><br>
+
+    <p>2. Which waste should be recycled?</p>
+
+    <input type="radio" name="q2" value="1"> Plastic<br>
+    <input type="radio" name="q2" value="0"> Food Waste<br>
+    <input type="radio" name="q2" value="0"> Leaves<br><br>
+
+    <p>3. Which method saves water?</p>
+
+    <input type="radio" name="q3" value="1"> Rainwater Harvesting<br>
+    <input type="radio" name="q3" value="0"> Keeping taps open<br>
+    <input type="radio" name="q3" value="0"> Wasting water<br><br>
+
+    <button onclick="checkQuiz()">Submit Quiz</button>
+
+    <h3 id="quizResult"></h3>
+
+</section>
+</main>
+
+<script src="script.js"></script>
+<!-- AI Chatbot -->
+<div class="chatbot">
+
+<button id="chatBtn" onclick="toggleChat()">🤖 AI</button>
+
+<div id="chatBox" class="chat-box">
+
+<h3>Eco AI Assistant 🌿</h3>
+
+<div id="messages"></div>
+
+<input type="text" id="userInput" placeholder="Ask something...">
+
+<button onclick="sendMessage()">Send</button>
+
+</div>
+
+</div>
+<section id="weather">
+    <h2>🌦️ Today's Weather</h2>
+
+    <h3 id="city">Loading...</h3>
+
+    <h1 id="temp"></h1>
+
+    <p id="condition"></p>
+
+</section>
+<script src="Ravi.js"></script>
+
+</body>
+<footer>
+
+<h2>🌿 EcoSmartVillage</h2>
+
+<p>
+Building Cleaner, Greener and Smarter Villages
+through Community Engagement.
+</p>
+
+<hr>
+
+<p>
+
+👨‍💻 Developed by <b>Raviraj Jagtap</b>
+
+</p>
+
+<p>
+
+SVPM College of Engineering,
+Malegaon (Bk)
+
+</p>
+
+<p>
+
+© 2026 All Rights Reserved
+
+</p>
+
+</footer>
+
+</html>
