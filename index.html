@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Profile - Hospital Portal</title>
+    <link rel="stylesheet" href="omkar.css">
+    <style>
+        /* डार्क मोडचे डिझाईन */
+        body.dark-mode {
+            background-color: #121212;
+            color: #e0e0e0;
+        }
+        body.dark-mode .card {
+            background-color: #1e1e1e;
+            color: #e0e0e0;
+            box-shadow: 0 4px 6px rgba(255, 255, 255, 0.1);
+        }
+        body.dark-mode input, 
+        body.dark-mode textarea {
+            background-color: #2c2c2c;
+            color: #ffffff;
+            border: 1px solid #555;
+        }
+        body.dark-mode div[style*="background: #f8f9f9"] {
+            background-color: #252525 !important;
+        }
+        body.dark-mode li {
+            background-color: #2c3e50 !important;
+            color: #ffffff !important;
+        }
+
+        /* डार्क मोड लहान बटण स्टाईल */
+        .dark-btn {
+            background: #34495e;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 11px;
+            cursor: pointer;
+        }
+
+        @media print {
+            button, input, textarea, div[style*="background: #f8f9f9"], .dark-btn {
+                display: none !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container" style="max-width: 800px; margin-top: 30px;">
+        <!-- पहिले कार्ड ज्याच्या डाव्या कोपऱ्यात डार्क मोडचे लहान बटण असेल -->
+        <div class="card" style="position: relative; padding-top: 15px;">
+            
+            <!-- डाव्या कोपऱ्यातील लहान डार्क मोड बटण -->
+            <div style="position: absolute; top: 10px; left: 10px;">
+                <button onclick="toggleDarkMode()" class="dark-btn">🌙 Dark</button>
+            </div>
+
+            <div style="text-align: center; margin-top: 5px;">
+                <h2>👤 Patient Profile</h2>
+                <h3 id="patientNameDisplay" style="color: #16a085; margin: 10px 0;"></h3>
+                <p><strong>Aadhaar Number:</strong> <span id="patientAadhaarDisplay"></span></p>
+                
+                <div style="margin-top: 15px;">
+                    <button onclick="printProfile()" style="background: #2980b9; width: auto; padding: 8px 15px; margin-right: 5px;">🖨️ Print</button>
+                    <button onclick="logout()" style="background: #e74c3c; width: auto; padding: 8px 15px;">Logout</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- QR कोड कार्ड -->
+        <div class="card" style="text-align: center;">
+            <h3>🪪 Patient QR Code</h3>
+            <p>Scan this QR code to view patient profile & reports instantly.</p>
+            <div id="patientQRCode" style="display: flex; justify-content: center; margin-top: 15px;"></div>
+        </div>
+
+        <div class="card">
+            <h3>📁 Medical Reports & X-Ray (वैद्यकीय अहवाल)</h3>
+            <p>Here you can view your uploaded reports, test results, and X-Ray photos.</p>
+            
+            <div style="margin: 20px 0; padding: 15px; background: #f8f9f9; border-radius: 10px;">
+                <h4>Add New Report / X-Ray</h4>
+                <input type="text" id="reportTitle" placeholder="Report Name (e.g. Chest X-Ray)"><br><br>
+                
+                <label style="font-size: 14px;">Upload X-Ray / Photo:</label><br>
+                <input type="file" id="reportImageFile" accept="image/*" style="margin: 10px 0;"><br><br>
+
+                <textarea id="reportDetails" placeholder="Report Details / Doctor Remarks" style="width:100%; padding:10px; border-radius:8px; border:1px solid #ccc;"></textarea><br>
+                
+                <button onclick="addReportWithImage()">Upload Report</button>
+            </div>
+
+            <h4>Saved Reports List:</h4>
+            <ul id="reportsList" style="margin-top: 15px; padding-left: 20px; text-align: left;">
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            if (localStorage.getItem('theme') === 'dark') {
+                document.body.classList.add('dark-mode');
+                document.querySelector('.dark-btn').innerText = '☀️ Light';
+            }
+        });
+
+        let currentAadhaar = localStorage.getItem('currentPatient');
+        if (!currentAadhaar) {
+            alert('कृपया आधी लॉगिन करा!');
+            window.location.href = 'login.html';
+        }
+
+        let patientData = JSON.parse(localStorage.getItem(currentAadhaar));
+        if (patientData) {
+            document.getElementById('patientNameDisplay').innerText = patientData.name;
+            document.getElementById('patientAadhaarDisplay').innerText = patientData.aadhaar;
+            loadReports();
+            generateQRCode(patientData.aadhaar);
+        }
+
+        function generateQRCode(aadhaarText) {
+            let qrContainer = document.getElementById('patientQRCode');
+            qrContainer.innerHTML = ""; 
+            let qrImageUrl = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${aadhaarText}`;
+            let img = document.createElement('img');
+            img.src = qrImageUrl;
+            img.alt = "Patient QR Code";
+            img.style.borderRadius = "8px";
+            qrContainer.appendChild(img);
+        }
+
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+            let btn = document.querySelector('.dark-btn');
+            
+            if (document.body.classList.contains('dark-mode')) {
+                localStorage.setItem('theme', 'dark');
+                btn.innerText = '☀️ Light';
+            } else {
+                localStorage.setItem('theme', 'light');
+                btn.innerText = '🌙 Dark';
+            }
+        }
+
+        function addReportWithImage() {
+            let title = document.getElementById('reportTitle').value.trim();
+            let details = document.getElementById('reportDetails').value.trim();
+            let fileInput = document.getElementById('reportImageFile');
+
+            if (!title || !details) {
+                alert('कृपया रिपोर्टचे नाव आणि माहिती दोन्ही भरा!');
+                return;
+            }
+
+            let reportsKey = 'reports_' + currentAadhaar;
+            let existingReports = JSON.parse(localStorage.getItem(reportsKey)) || [];
+
+            if (fileInput.files && fileInput.files[0]) {
+                let reader = new FileReader();
+                reader.onload = function(e) {
+                    existingReports.push({ 
+                        title: title, 
+                        details: details, 
+                        image: e.target.result, 
+                        date: new Date().toLocaleDateString() 
+                    });
+                    localStorage.setItem(reportsKey, JSON.stringify(existingReports));
+                    alert('X-Ray & Report Uploaded Successfully!');
+                    clearAndReloadReports();
+                };
+                reader.readAsDataURL(fileInput.files[0]);
+            } else {
+                existingReports.push({ 
+                    title: title, 
+                    details: details, 
+                    image: null, 
+                    date: new Date().toLocaleDateString() 
+                });
+                localStorage.setItem(reportsKey, JSON.stringify(existingReports));
+                alert('Report Uploaded Successfully!');
+                clearAndReloadReports();
+            }
+        }
+
+        function clearAndReloadReports() {
+            document.getElementById('reportTitle').value = '';
+            document.getElementById('reportDetails').value = '';
+            document.getElementById('reportImageFile').value = '';
+            loadReports();
+        }
+
+        function loadReports() {
+            let reportsKey = 'reports_' + currentAadhaar;
+            let existingReports = JSON.parse(localStorage.getItem(reportsKey)) || [];
+            let listUl = document.getElementById('reportsList');
+            
+            listUl.innerHTML = '';
+            if (existingReports.length === 0) {
+                listUl.innerHTML = '<li>कोणताही रिपोर्ट उपलब्ध नाही.</li>';
+                return;
+            }
+
+            existingReports.forEach((rep, index) => {
+                let li = document.createElement('li');
+                li.style.margin = '15px 0';
+                li.style.padding = '12px';
+                li.style.background = '#e8f8f5';
+                li.style.borderRadius = '8px';
+                
+                let imageHTML = rep.image ? `<br><img src="${rep.image}" style="max-width:100%; height:auto; margin-top:10px; border-radius:6px;" alt="X-Ray Image">` : '';
+
+                li.innerHTML = `
+                    <strong>${rep.title}</strong> (${rep.date})<br>
+                    <span>${rep.details}</span>
+                    ${imageHTML}
+                    <br><br>
+                    <button onclick="deleteReport(${index})" style="background: #e74c3c; color: white; border: none; padding: 5px 10px; border-radius: 4px; font-size: 12px; cursor: pointer;">🗑️ Delete Report</button>
+                `;
+                listUl.appendChild(li);
+            });
+        }
+
+        function deleteReport(index) {
+            let reportsKey = 'reports_' + currentAadhaar;
+            let existingReports = JSON.parse(localStorage.getItem(reportsKey)) || [];
+            
+            // लिस्टधून तो विशिष्ट रिपोर्ट काढून टाकणे
+            existingReports.splice(index, 1);
+            
+            // नवीन डेटा पुन्हा सेव्ह करणे
+            localStorage.setItem(reportsKey, JSON.stringify(existingReports));
+            
+            // लिस्ट रिफ्रेश करणे
+            loadReports();
+            alert('रिपोर्ट यशस्वीरित्या डिलीट केला!');
+        }
+
+        function printProfile() {
+            window.print();
+        }
+
+        function logout() {
+            localStorage.removeItem('currentPatient');
+            window.location.href = 'login.html';
+        }
+    </script>
+
+</body>
+</html>

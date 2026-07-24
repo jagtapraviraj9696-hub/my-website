@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital Portal - Login & Register</title>
+    <link rel="stylesheet" href="omkar.css">
+</head>
+<body>
+
+    <div class="auth-container">
+        <div class="auth-box">
+            <h2>🏥 Hospital Portal</h2>
+            
+            <!-- Registration Form -->
+            <div id="registerSection">
+                <h3>Patient Registration</h3>
+                <input type="text" id="regName" placeholder="Full Name (पूर्ण नाव)">
+                <input type="text" id="regAadhaar" placeholder="Aadhaar Number (आधार नंबर)">
+                <input type="password" id="regPassword" placeholder="Password (पासवर्ड)">
+                <button onclick="registerPatient()">Register</button>
+                <p style="text-align:center; margin-top:15px; cursor:pointer; color:#16a085;" onclick="toggleAuth()">Already have an account? Login here</p>
+            </div>
+
+            <!-- Login Form (Initially Hidden) -->
+            <div id="loginSection" style="display: none;">
+                <h3>Patient Login</h3>
+                <input type="text" id="loginAadhaar" placeholder="Aadhaar Number (आधार नंबर)">
+                <input type="password" id="loginPassword" placeholder="Password (पासवर्ड)">
+                <button onclick="loginPatient()">Login</button>
+                <p style="text-align:center; margin-top:15px; cursor:pointer; color:#16a085;" onclick="toggleAuth()">New Patient? Register here</p>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        // Toggle between Login and Register forms
+        function toggleAuth() {
+            let regSec = document.getElementById('registerSection');
+            let logSec = document.getElementById('loginSection');
+            if (regSec.style.display === 'none') {
+                regSec.style.display = 'block';
+                logSec.style.display = 'none';
+            } else {
+                regSec.style.display = 'none';
+                logSec.style.display = 'block';
+            }
+        }
+
+        function registerPatient() {
+            let name = document.getElementById('regName').value;
+            let aadhaar = document.getElementById('regAadhaar').value;
+            let password = document.getElementById('regPassword').value;
+
+            if(name && aadhaar && password) {
+                // सध्या लोकलस्टोरेज (LocalStorage) वापरून डेटा सेव्ह करू, नंतर आपण यात Firebase जोडू शकतो
+                localStorage.setItem(aadhaar, JSON.stringify({name, aadhaar, password}));
+                alert('Registration Successful! Please Login.');
+                toggleAuth();
+            } else {
+                alert('कृपया सर्व माहिती भरा!');
+            }
+        }
+
+        function loginPatient() {
+            let aadhaar = document.getElementById('loginAadhaar').value;
+            let password = document.getElementById('loginPassword').value;
+
+            let savedData = JSON.parse(localStorage.getItem(aadhaar));
+
+            if(savedData && savedData.password === password) {
+                alert('Login Successful! Welcome ' + savedData.name);
+                // लॉगिन झाल्यावर पेशंटच्या प्रोफाईल पेजवर पाठवण्यासाठी
+                localStorage.setItem('currentPatient', aadhaar);
+                window.location.href = 'profile.html';
+            } else {
+                alert('चुकीचा आधार नंबर किंवा पासवर्ड!');
+            }
+        }
+    </script>
+
+</body>
+</html>
