@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital Portal - Login</title>
+    <link rel="stylesheet" href="omkar.css">
+</head>
+<body>
+    <div class="container" style="max-width: 400px; margin-top: 50px;">
+        <div class="card" style="text-align: center;">
+            <h2>🏥 Hospital Portal Login</h2>
+            <p>Enter patient details to continue</p>
+            
+            <input type="text" id="loginName" placeholder="Patient Name" style="width:100%; padding:10px; margin:10px 0; border-radius:6px; border:1px solid #ccc;"><br>
+            <input type="text" id="loginAadhaar" placeholder="Aadhaar Number (12 digits)" style="width:100%; padding:10px; margin:10px 0; border-radius:6px; border:1px solid #ccc;"><br><br>
+            
+            <button onclick="loginPatient()" style="width:100%; padding:10px; background:#27ae60; color:white; border:none; border-radius:6px; cursor:pointer;">Login / Register</button>
+        </div>
+    </div>
+
+    <script>
+        function loginPatient() {
+            let name = document.getElementById('loginName').value.trim();
+            let aadhaar = document.getElementById('loginAadhaar').value.trim();
+
+            if (!name || !aadhaar) {
+                alert('कृपया नाव आणि आधार नंबर दोन्ही भरा!');
+                return;
+            }
+
+            if (aadhaar.length < 12) {
+                alert('कृपया वैध १२ अंकी आधार नंबर टाка!');
+                return;
+            }
+
+            let patientObj = { name: name, aadhaar: aadhaar };
+            localStorage.setItem(aadhaar, JSON.stringify(patientObj));
+            localStorage.setItem('currentPatient', aadhaar);
+
+            window.location.href = 'profile.html';
+        }
+    </script>
+</body>
+</html>
